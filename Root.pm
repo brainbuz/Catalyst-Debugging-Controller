@@ -80,6 +80,8 @@ sub brief :Path( 'brief' ) :Args(0) {
     my $digestname = 
         $c->engine->env->{'HTTP_AUTHORIZATION'} ||
         "Sorry server didn\'t return this value. Noone is logged in now." ;
+    my $cookie = $c->engine->env->{'HTTP_COOKIE'} ||
+	"Cookie not set" ;
     my ($username) = $digestname =~ m/username="(.*)", realm/ ;
     if ( $username ) { $username =   
         "The Captured User Name: $username" }
@@ -89,7 +91,8 @@ sub brief :Path( 'brief' ) :Args(0) {
     The string Apache sends back when a user is logged in
     via digest authentication is:
     \$c->engine->env->{'HTTP_AUTHORIZATION'} = $digestname  
-    $username
+    $username 
+    \$c->engine->env->{'HTTP_COOKIE'} = $cookie
      <\/pre>/;
     $c->response->body( $briefwords );
 }

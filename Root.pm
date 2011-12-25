@@ -10,7 +10,7 @@ __PACKAGE__->config(namespace => '');
 
 TestApp::Controller::Root - Root Controller for TestApp
 
-=head1 VERSION 1.02
+=head1 VERSION 1.03
 
 =head1 DESCRIPTION
 
@@ -92,6 +92,8 @@ sub brief :Path( 'brief' ) :Args(0) {
     via digest authentication is:
     \$c->engine->env->{'HTTP_AUTHORIZATION'} = $digestname  
     $username 
+    If you're using Apache 2.4 mod_auth_form or session modules
+    you might want this string.
     \$c->engine->env->{'HTTP_COOKIE'} = $cookie
      <\/pre>/;
     $c->response->body( $briefwords );

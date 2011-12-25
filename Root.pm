@@ -10,7 +10,7 @@ __PACKAGE__->config(namespace => '');
 
 TestApp::Controller::Root - Root Controller for TestApp
 
-=head1 VERSION 1.03
+=head1 VERSION 1.04
 
 =head1 DESCRIPTION
 
@@ -40,6 +40,33 @@ Like pages of it.
 If you point a form at this page instead of spew, it will only tell you
 the GET and POST parameters. spew already includes the form data dump, use
 it to get everything.
+
+=head1 Deployment Within a Catalyst Application
+
+=over
+
+=item *
+
+ Rename this controller Diag.pm (or whatever suits you). 
+
+=item *
+
+ Change the Package Name line to match your application.
+
+=item *
+
+ Rename sub index to sub diag :Path('/diag') :Args() {
+
+=item *
+
+ Delete the subs "end" and "default".
+
+=item *
+
+ Adjust the paths to the subs form, spew, and brief.
+
+=back
+
 
 =cut
 
